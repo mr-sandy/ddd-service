@@ -12,40 +12,43 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 var orderService = new OrdersService(new OrderRepository());
-var ordersResultVisitor = new FacadeResultVisitor<OrderResource>();
+
+Func<HttpRequest, string> getUserIdFromHttpRequest = (request) => "Sandy";
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-app.UseSwaggerUI();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
 
 app.MapPost("/orders", (HttpRequest request, CreateOrderResource resource) =>
 {
-    var result = orderService.CreateOrder(resource, "Sandy");
+    var userId = getUserIdFromHttpRequest(request);
+    var result = orderService.CreateOrder(resource, userId);
 
-    return result.Accept(ordersResultVisitor);
+    return result.Accept(new FacadeResultVisitor<OrderResource>());
 })
 .WithName("CreateOrder")
 .WithOpenApi();
 
-app.MapPost("/orders/{id}/order-lines", (int id, OrderLineResource resource) =>
+app.MapPost("/orders/{id}/order-lines", (HttpRequest request, int id, OrderLineResource resource) =>
 {
-    var result =  orderService.AddOrderLine(id, resource, "Sandy");
+    var userId = getUserIdFromHttpRequest(request);
+    var result = orderService.AddOrderLine(id, resource, userId);
 
-    return result.Accept(ordersResultVisitor);
+    return result.Accept(new FacadeResultVisitor<OrderLineResource>());
 })
 .WithName("AddOrderLine")
 .WithOpenApi();
 
 app.MapGet("/orders/{id}", (int id) =>
 {
-    var result =  orderService.GetOrder(id);
+    var result = orderService.GetOrder(id);
 
-    return result.Accept(ordersResultVisitor);
+    return result.Accept(new FacadeResultVisitor<OrderResource>());
 })
 .WithName("GetOrder")
 .WithOpenApi();
