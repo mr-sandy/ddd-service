@@ -1,0 +1,15 @@
+/Users/sandy/dev/ddd-service/Persistence/bin/Debug/net8.0/Persistence.deps.json
+/Users/sandy/dev/ddd-service/Persistence/bin/Debug/net8.0/Persistence.dll
+/Users/sandy/dev/ddd-service/Persistence/bin/Debug/net8.0/Persistence.pdb
+/Users/sandy/dev/ddd-service/Persistence/bin/Debug/net8.0/Domain.dll
+/Users/sandy/dev/ddd-service/Persistence/bin/Debug/net8.0/Domain.pdb
+/Users/sandy/dev/ddd-service/Persistence/obj/Debug/net8.0/Persistence.csproj.AssemblyReference.cache
+/Users/sandy/dev/ddd-service/Persistence/obj/Debug/net8.0/Persistence.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sandy/dev/ddd-service/Persistence/obj/Debug/net8.0/Persistence.AssemblyInfoInputs.cache
+/Users/sandy/dev/ddd-service/Persistence/obj/Debug/net8.0/Persistence.AssemblyInfo.cs
+/Users/sandy/dev/ddd-service/Persistence/obj/Debug/net8.0/Persistence.csproj.CoreCompileInputs.cache
+/Users/sandy/dev/ddd-service/Persistence/obj/Debug/net8.0/Persiste.61C28332.Up2Date
+/Users/sandy/dev/ddd-service/Persistence/obj/Debug/net8.0/Persistence.dll
+/Users/sandy/dev/ddd-service/Persistence/obj/Debug/net8.0/refint/Persistence.dll
+/Users/sandy/dev/ddd-service/Persistence/obj/Debug/net8.0/Persistence.pdb
+/Users/sandy/dev/ddd-service/Persistence/obj/Debug/net8.0/ref/Persistence.dll

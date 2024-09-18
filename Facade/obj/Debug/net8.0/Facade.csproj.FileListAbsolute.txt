@@ -1,0 +1,15 @@
+/Users/sandy/dev/ddd-service/Facade/bin/Debug/net8.0/Facade.deps.json
+/Users/sandy/dev/ddd-service/Facade/bin/Debug/net8.0/Facade.dll
+/Users/sandy/dev/ddd-service/Facade/bin/Debug/net8.0/Facade.pdb
+/Users/sandy/dev/ddd-service/Facade/bin/Debug/net8.0/Domain.dll
+/Users/sandy/dev/ddd-service/Facade/bin/Debug/net8.0/Domain.pdb
+/Users/sandy/dev/ddd-service/Facade/obj/Debug/net8.0/Facade.csproj.AssemblyReference.cache
+/Users/sandy/dev/ddd-service/Facade/obj/Debug/net8.0/Facade.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sandy/dev/ddd-service/Facade/obj/Debug/net8.0/Facade.AssemblyInfoInputs.cache
+/Users/sandy/dev/ddd-service/Facade/obj/Debug/net8.0/Facade.AssemblyInfo.cs
+/Users/sandy/dev/ddd-service/Facade/obj/Debug/net8.0/Facade.csproj.CoreCompileInputs.cache
+/Users/sandy/dev/ddd-service/Facade/obj/Debug/net8.0/Facade.csproj.Up2Date
+/Users/sandy/dev/ddd-service/Facade/obj/Debug/net8.0/Facade.dll
+/Users/sandy/dev/ddd-service/Facade/obj/Debug/net8.0/refint/Facade.dll
+/Users/sandy/dev/ddd-service/Facade/obj/Debug/net8.0/Facade.pdb
+/Users/sandy/dev/ddd-service/Facade/obj/Debug/net8.0/ref/Facade.dll
