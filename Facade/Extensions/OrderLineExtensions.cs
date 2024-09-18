@@ -14,6 +14,7 @@ public static class OrderLineExtensions
     {
         return new OrderLineResource()
         {
+            Id = orderLine.Id,
             ProductNumber = orderLine.ProductCode,
             Quantity = orderLine.Quantity
         };

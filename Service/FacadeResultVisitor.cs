@@ -1,21 +1,24 @@
-using System;
 using Facade.Results;
 
 namespace Service;
 
-public class FacadeResultVisitor<T> : IFacadeResultVisitor<T, IResult>
+public class FacadeResultVisitor<T>(Func<T, string>? uriGenerator = null) : IFacadeResultVisitor<T, IResult>
 {
-    public IResult Visit(CreatedResult<T> createdResult)
+    private readonly Func<T, string>? uriGenerator = uriGenerator;
+
+    public IResult Visit(CreatedFacadeResult<T> createdResult)
     {
-        return Results.Created("/123", createdResult.Resource);
+        string uri = uriGenerator == null ? "" : uriGenerator(createdResult.Resource);
+
+        return Results.Created(uri, createdResult.Resource);
     }
 
-    public IResult Visit(NotFoundResult<T> notFoundResult)
+    public IResult Visit(NotFoundFacadeResult<T> notFoundResult)
     {
         return Results.NotFound();
     }
 
-    public IResult Visit(SuccessResult<T> successResult)
+    public IResult Visit(SuccessFacadeResult<T> successResult)
     {
         return Results.Ok(successResult.Resource);
     }

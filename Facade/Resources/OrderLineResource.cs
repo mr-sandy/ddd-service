@@ -1,8 +1,6 @@
 namespace Facade.Resources;
 
-public class OrderLineResource
+public class OrderLineResource : CreateOrderLineResource
 {
-    public required string ProductNumber { get; set; }
-
-    public required int Quantity { get; set; }
+    public int Id { get; set; }
 }

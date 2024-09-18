@@ -26,11 +26,29 @@ public class Order
 
     public OrderLine AddOrderLine(AddOrderLineActivity activity)
     {
-        this.activities.Add(activity);
-
-        var orderLine = new OrderLine(activity.ProductCode, activity.Quantity);
+        int id = this.orderLines.Any() ? this.orderLines.Max(ol => ol.Id) + 1 : 1;
+        
+        var orderLine = new OrderLine(id, activity.ProductCode, activity.Quantity);
 
         this.orderLines.Add(orderLine);
+
+        this.activities.Add(activity);
+
+        return orderLine;
+    }
+
+    public OrderLine? RemoveOrderLine(RemoveOrderLineActivity activity)
+    {
+        var orderLine = this.orderLines.Find(ol => ol.Id == activity.OrderLineId);
+
+        if (orderLine == null)
+        {
+            return null;
+        }
+
+        this.orderLines.Remove(orderLine);
+
+        this.activities.Add(activity);
 
         return orderLine;
     }

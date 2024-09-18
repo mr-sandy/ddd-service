@@ -29,7 +29,7 @@ app.MapPost("/orders", (HttpRequest request, CreateOrderResource resource) =>
     var userId = getUserIdFromHttpRequest(request);
     var result = orderService.CreateOrder(resource, userId);
 
-    return result.Accept(new FacadeResultVisitor<OrderResource>());
+    return result.Accept(new FacadeResultVisitor<OrderResource>(r => $"/orders/{r.Id}"));
 })
 .WithName("CreateOrder")
 .WithOpenApi();
@@ -39,9 +39,19 @@ app.MapPost("/orders/{id}/order-lines", (HttpRequest request, int id, OrderLineR
     var userId = getUserIdFromHttpRequest(request);
     var result = orderService.AddOrderLine(id, resource, userId);
 
-    return result.Accept(new FacadeResultVisitor<OrderLineResource>());
+    return result.Accept(new FacadeResultVisitor<OrderLineResource>(r => $"/orders/{id}/order-lines/{r.Id}"));
 })
 .WithName("AddOrderLine")
+.WithOpenApi();
+
+app.MapDelete("/orders/{id}/order-lines/{orderLineId}", (HttpRequest request, int id, int orderLineId) =>
+{
+    var userId = getUserIdFromHttpRequest(request);
+    var result = orderService.RemoveOrderLine(id, orderLineId, userId);
+
+    return result.Accept(new FacadeResultVisitor<OrderLineResource>(r => $"/orders/{id}/order-lines/{r.Id}"));
+})
+.WithName("RemoveOrderLine")
 .WithOpenApi();
 
 app.MapGet("/orders/{id}", (int id) =>

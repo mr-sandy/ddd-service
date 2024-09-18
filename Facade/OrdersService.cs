@@ -19,7 +19,7 @@ public class OrdersService(IOrderRepository orderRepository)
 
         this.orderRepository.Add(order);
 
-        return new CreatedResult<OrderResource>(order.ToResource());
+        return new CreatedFacadeResult<OrderResource>(order.ToResource());
     }
 
     public IFacadeResult<OrderLineResource> AddOrderLine(int orderId, OrderLineResource resource, string userId)
@@ -28,14 +28,35 @@ public class OrdersService(IOrderRepository orderRepository)
 
         if (order == null)
         {
-            return new NotFoundResult<OrderLineResource>();
+            return new NotFoundFacadeResult<OrderLineResource>();
         }
 
         var activity = new AddOrderLineActivity(userId, DateTime.UtcNow, resource.ProductNumber, resource.Quantity);
 
         var orderLine = order.AddOrderLine(activity);
 
-        return new SuccessResult<OrderLineResource>(orderLine.ToResource());
+        return new CreatedFacadeResult<OrderLineResource>(orderLine.ToResource());
+    }
+
+    public IFacadeResult<OrderLineResource> RemoveOrderLine(int orderId, int orderLineId, string userId)
+    {
+        var order = this.orderRepository.Get(orderId);
+
+        if (order == null)
+        {
+            return new NotFoundFacadeResult<OrderLineResource>();
+        }
+
+        var activity = new RemoveOrderLineActivity(userId, DateTime.UtcNow, orderLineId);
+
+        var orderLine = order.RemoveOrderLine(activity);
+
+        if (orderLine == null)
+        {
+            return new NotFoundFacadeResult<OrderLineResource>();
+        }
+
+        return new CreatedFacadeResult<OrderLineResource>(orderLine.ToResource());
     }
 
     public IFacadeResult<OrderResource> GetOrder(int orderId)
@@ -44,9 +65,9 @@ public class OrdersService(IOrderRepository orderRepository)
 
         if (order == null)
         {
-            return new NotFoundResult<OrderResource>();
+            return new NotFoundFacadeResult<OrderResource>();
         }
 
-        return new SuccessResult<OrderResource>(order.ToResource());
+        return new SuccessFacadeResult<OrderResource>(order.ToResource());
     }
 }
