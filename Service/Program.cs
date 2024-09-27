@@ -63,4 +63,13 @@ app.MapGet("/orders/{id}", (int id) =>
 .WithName("GetOrder")
 .WithOpenApi();
 
+app.MapGet("/orders/{id}/activities", (int id) =>
+{
+    var result = orderService.GetOrderActivities(id);
+
+    return result.Accept(new FacadeResultVisitor<IEnumerable<ActivityResource>>());
+})
+.WithName("GetOrderActivities")
+.WithOpenApi();
+
 app.Run();

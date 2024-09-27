@@ -70,4 +70,16 @@ public class OrdersService(IOrderRepository orderRepository)
 
         return new SuccessFacadeResult<OrderResource>(order.ToResource());
     }
+
+    public IFacadeResult<IEnumerable<ActivityResource>> GetOrderActivities(int orderId)
+    {
+        var order = this.orderRepository.Get(orderId);
+
+        if (order == null)
+        {
+            return new NotFoundFacadeResult<IEnumerable<ActivityResource>>();
+        }
+
+        return new SuccessFacadeResult<IEnumerable<ActivityResource>>(order.Activities.ToResource());
+    }
 }
