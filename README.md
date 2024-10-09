@@ -2,14 +2,14 @@
 
 A sample of a layered service architecture in .Net.
 
-## Domain
+### Domain
 C# only (i.e. framework-free) model of the business logic
 
-## Facade
+### Facade
 C# only (i.e. framework-free) implementation of services to be exposed to consumers
 
-## Persistence
+### Persistence
 Framework-aware implementation of persistence interfaces
 
-## Service
+### Service
 Framework-aware implementation of service / service host
