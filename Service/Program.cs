@@ -34,7 +34,7 @@ app.MapPost("/orders", (HttpRequest request, CreateOrderResource resource) =>
 .WithName("CreateOrder")
 .WithOpenApi();
 
-app.MapPost("/orders/{id}/order-lines", (HttpRequest request, int id, OrderLineResource resource) =>
+app.MapPost("/orders/{id}/order-lines", (HttpRequest request, int id, CreateOrderLineResource resource) =>
 {
     var userId = getUserIdFromHttpRequest(request);
     var result = orderService.AddOrderLine(id, resource, userId);

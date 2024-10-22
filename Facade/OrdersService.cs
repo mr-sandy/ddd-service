@@ -22,7 +22,7 @@ public class OrdersService(IOrderRepository orderRepository)
         return new CreatedFacadeResult<OrderResource>(order.ToResource());
     }
 
-    public IFacadeResult<OrderLineResource> AddOrderLine(int orderId, OrderLineResource resource, string userId)
+    public IFacadeResult<OrderLineResource> AddOrderLine(int orderId, CreateOrderLineResource resource, string userId)
     {
         var order = this.orderRepository.Get(orderId);
 
